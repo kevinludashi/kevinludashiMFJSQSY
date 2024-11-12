@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美缝计算器 2.0</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+            position: relative; /* 为了定位水印 */
+        }
+        h1 {
+            font-size: 36px;
+            color: #333;
+            margin-top: 20px;
+        }
+        .description {
+            background-color: #fff;
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .description h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .description ol {
+            margin-left: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            width: 200px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .blue-button {
+            background-color: #007BFF;
+        }
+        .blue-button:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            .button {
+                width: 100%;
+                font-size: 16px;
+                padding: 12px 0;
+            }
+            .button-container {
+                flex-direction: column;
+            }
+        }
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        /* 水印样式 */
+        body::before {
+            content: "Kevin鲁大师 未经许可 盗用必究";
+            position: fixed; /* 固定在屏幕上 */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-30deg); /* 旋转水印 */
+            font-size: 24px; /* 缩小水印大小，减少为70% */
+            color: rgba(0, 0, 0, 0.05); /* 降低透明度 */
+            text-align: center;
+            line-height: 100vh; /* 使水印垂直居中 */
+            pointer-events: none; /* 确保水印不影响页面上的其他元素 */
+            z-index: 9999; /* 确保水印在页面的最上层 */
+        }
+    </style>
+</head>
+<body>
+    <h1>美缝计算器 2.0</h1>
+
+    <!-- 说明区域 -->
+    <div class="description">
+        <h2>使用须知：</h2>
+        <ol>
+            <li>绿色按钮是计算延米和包工包料总价格计算器；</li>
+            <li>蓝色按钮是计算延米和美缝材料用量计算器；</li>
+            <li>刷新网页相当于计算机归零；</li>
+            <li>在首页点几次按钮就出现几个计算器（无上限）；</li>
+            <li>材料用量计算会有小数点，例如2.52支/桶，就代表需要3支/桶，以此类推；</li>
+            <li>材料用量计算器，如果需要双管材料就输入20，如果需要的是桶装3kg材料就输入100即可；</li>
+            <li>计算器代码仅供个人学习使用，请勿用于商业用图，如有侵权可联系删除 Mail:coco241031@126.com；</li>
+            <li>如有任何问题，请通过邮箱联系反馈，谢谢！</li>
+        </ol>
+    </div>
+
+    <div class="button-container">
+        <a href="https://kevinludashi.github.io/kevinludashimj2/" class="button" target="_blank">面积算延米及价格计算器</a>
+        <a href="https://kevinludashi.github.io/kevinludashiks2/" class="button" target="_blank">块数算延米及价格计算器</a>
+        <a href="https://kevinludashi.github.io/kevinludashimjcl2/" class="button blue-button" target="_blank">面积算延米及材料用量计算器</a>
+        <a href="https://kevinludashi.github.io/kevinludashikscl2/" class="button blue-button" target="_blank">块数算延米及材料用量计算器</a>
+    </div>
+    
+    <footer>制作人：Kevin鲁大师【未经授权 盗用必究】</footer>
+</body>
+</html>
