@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>美缝计算器 2.0</title>
+    <title>美缝计算器</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* 保证内容从上往下排列 */
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
             text-align: center;
-            position: relative; /* 为了定位水印 */
+            position: relative;
+            padding-bottom: 50px; /* 留出空间避免footer被遮挡 */
         }
         h1 {
             font-size: 36px;
@@ -49,6 +50,7 @@
             width: 100%;
             max-width: 900px;
             padding: 20px;
+            margin-bottom: 40px; /* 增加按钮与底部的间距 */
         }
         .button {
             background-color: #4CAF50;
@@ -82,10 +84,9 @@
             }
         }
         footer {
-            position: absolute;
-            bottom: 20px;
             font-size: 14px;
             color: #888;
+            margin-top: 10px; /* 让footer和最后按钮之间保持10px距离 */
         }
 
         /* 水印样式 */
@@ -107,7 +108,7 @@
     </style>
 </head>
 <body>
-    <h1>美缝计算器 2.0</h1>
+    <h1>美缝计算器</h1>
 
     <!-- 说明区域 -->
     <div class="description">
@@ -119,7 +120,7 @@
             <li>在首页点几次按钮就出现几个计算器（无上限）；</li>
             <li>材料用量计算会有小数点，例如2.52支/桶，就代表需要3支/桶，以此类推；</li>
             <li>材料用量计算器，如果需要双管材料就输入20，如果需要的是桶装3kg材料就输入100即可；</li>
-            <li>计算器代码仅供个人学习使用，请勿用于商业用图，如有侵权可联系删除 Mail:coco241031@126.com；</li>
+            <li>计算器代码仅供个人学习使用，请勿用于商业用图，如有侵权可联系删除 email:coco241031@126.com；</li>
             <li>如有任何问题，请通过邮箱联系反馈，谢谢！</li>
         </ol>
     </div>
