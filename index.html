@@ -9,20 +9,21 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* 保证内容从上往下排列 */
             align-items: center;
+            justify-content: flex-start;
             min-height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
             text-align: center;
+            padding: 20px 0 50px;
             position: relative;
-            padding-bottom: 50px; /* 留出空间避免footer被遮挡 */
         }
+
         h1 {
             font-size: 36px;
             color: #333;
-            margin-top: 20px;
         }
+
         .description {
             background-color: #fff;
             color: #333;
@@ -35,13 +36,16 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: left;
         }
+
         .description h2 {
             font-size: 24px;
             margin-bottom: 10px;
         }
+
         .description ol {
             margin-left: 20px;
         }
+
         .button-container {
             display: flex;
             flex-wrap: wrap;
@@ -50,11 +54,10 @@
             width: 100%;
             max-width: 900px;
             padding: 20px;
-            margin-bottom: 40px; /* 增加按钮与底部的间距 */
         }
+
+        /* 公共按钮样式 */
         .button {
-            background-color: #4CAF50;
-            color: white;
             font-size: 18px;
             padding: 15px 30px;
             border: none;
@@ -63,47 +66,59 @@
             text-align: center;
             width: 200px;
             transition: background-color 0.3s ease;
+            display: inline-block;
         }
+
         .button:hover {
-            background-color: #45a049;
+            opacity: 0.8;
         }
+
+        /* 特定颜色的按钮 */
+        .green-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
         .blue-button {
             background-color: #007BFF;
+            color: white;
         }
-        .blue-button:hover {
-            background-color: #0056b3;
+
+        .red-button {
+            background-color: #FF5733;
+            color: white;
         }
+
+        /* 按钮大小和响应式 */
         @media (max-width: 600px) {
             .button {
                 width: 100%;
                 font-size: 16px;
                 padding: 12px 0;
             }
-            .button-container {
-                flex-direction: column;
-            }
         }
+
         footer {
             font-size: 14px;
             color: #888;
-            margin-top: 5px; /* 让footer和最后按钮之间保持5px距离 */
+            margin-top: 20px;
         }
 
         /* 水印样式 */
         body::before {
             content: "Kevin鲁大师 未经许可 盗用必究";
-            position: fixed; /* 固定在屏幕上 */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            transform: rotate(-30deg); /* 旋转水印 */
-            font-size: 24px; /* 缩小水印大小，减少为70% */
-            color: rgba(0, 0, 0, 0.05); /* 降低透明度 */
+            transform: rotate(-30deg);
+            font-size: 24px;
+            color: rgba(0, 0, 0, 0.05);
             text-align: center;
-            line-height: 100vh; /* 使水印垂直居中 */
-            pointer-events: none; /* 确保水印不影响页面上的其他元素 */
-            z-index: 9999; /* 确保水印在页面的最上层 */
+            line-height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
         }
     </style>
 </head>
@@ -120,16 +135,17 @@
             <li>在首页点几次按钮就出现几个计算器（无上限，仅适用于PC端）；</li>
             <li>材料用量计算会有小数点，例如2.52支/桶，就代表需要3支/桶，以此类推；</li>
             <li>材料用量计算器，如果需要双管材料就输入20，如果需要的是桶装3kg材料就输入100即可；</li>
-            <li>计算器代码仅供个人学习使用，请勿用于商业用图，如有侵权可联系删除；</li>
-            <li>如有任何问题，请通过邮箱联系反馈，谢谢（Mail:coco241031@126.com）！</li>
+            <li>计算器代码仅供个人学习使用，请勿用于商业用图，如有侵权可联系删除 email:coco241031@126.com；</li>
+            <li>如有任何问题，请通过邮箱联系反馈，谢谢！</li>
         </ol>
     </div>
 
     <div class="button-container">
-        <a href="https://kevinludashi.github.io/kevinludashimj2/" class="button" target="_blank">面积算延米及价格计算器</a>
-        <a href="https://kevinludashi.github.io/kevinludashiks2/" class="button" target="_blank">块数算延米及价格计算器</a>
+        <a href="https://kevinludashi.github.io/kevinludashimj2/" class="button green-button" target="_blank">面积算延米及价格计算器</a>
+        <a href="https://kevinludashi.github.io/kevinludashiks2/" class="button green-button" target="_blank">块数算延米及价格计算器</a>
         <a href="https://kevinludashi.github.io/kevinludashimjcl2/" class="button blue-button" target="_blank">面积算延米及材料用量计算器</a>
         <a href="https://kevinludashi.github.io/kevinludashikscl2/" class="button blue-button" target="_blank">块数算延米及材料用量计算器</a>
+        <a href="https://kevinludashi.github.io/kevinludashiLSJSQ/" class="button red-button" target="_blank">网页历史记录计算器</a>
     </div>
     
     <footer>制作人：Kevin鲁大师【未经授权 盗用必究】</footer>
