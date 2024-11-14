@@ -1,128 +1,158 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <!-- 设置文档的字符编码为UTF-8，支持多语言字符显示 -->
     <meta charset="UTF-8">
+
+    <!-- 设置视口，确保页面在不同设备上自适应，初始缩放为1 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 网页的标题，浏览器标签页上显示的文本 -->
     <title>美缝计算器</title>
+
     <style>
+        /* 设置页面的整体样式 */
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            text-align: center;
-            padding: 20px 0 50px;
-            position: relative;
+            font-family: Arial, sans-serif; /* 设置页面的字体 */
+            display: flex; /* 使用弹性布局（Flexbox） */
+            flex-direction: column; /* 布局为垂直排列 */
+            align-items: center; /* 水平居中对齐 */
+            justify-content: flex-start; /* 顶部对齐 */
+            min-height: 100vh; /* 页面最小高度为视口高度，确保页面高度适应各种屏幕 */
+            margin: 0; /* 去掉默认的边距 */
+            background: linear-gradient(45deg, #f0f0f0, #c8e1f0); /* 页面背景为渐变色 */
+            text-align: center; /* 页面文本居中对齐 */
+            padding: 10px 0 10px; /* 设置页面的内边距，顶部和底部 */
+            position: relative; /* 设置相对定位，以便可以后续设置定位元素 */
         }
 
+        /* 设置大标题的样式 */
         h1 {
-            font-size: 36px;
-            color: #333;
+            font-size: 36px; /* 字体大小 */
+            color: #333; /* 字体颜色 */
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); /* 字体加上阴影效果，增加层次感 */
+            margin-bottom: 20px; /* 设置下边距 */
         }
 
+        /* 设置说明区域的样式 */
         .description {
-            background-color: #fff;
-            color: #333;
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin: 20px;
-            width: 90%;
-            max-width: 800px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            text-align: left;
+            background-color: #fff; /* 背景色为白色 */
+            color: #333; /* 字体颜色 */
+            border: 1px solid #ddd; /* 边框颜色 */
+            padding: 15px; /* 内边距 */
+            margin: 10px; /* 外边距 */
+            width: 90%; /* 宽度为90% */
+            max-width: 800px; /* 最大宽度为800px */
+            border-radius: 15px; /* 边角圆润 */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* 设置阴影效果 */
+            text-align: left; /* 文字左对齐 */
+            transition: transform 0.3s ease-in-out; /* 添加过渡效果，使元素平滑移动 */
         }
 
+        /* 鼠标悬停时，说明区域向上移动5px，增加交互性 */
+        .description:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 设置说明区域标题的样式 */
         .description h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 24px; /* 字体大小 */
+            margin-bottom: 5px; /* 下边距 */
         }
 
+        /* 设置有序列表的左边距 */
         .description ol {
-            margin-left: 20px;
+            margin-left: -10px; /* 给有序列表加左边距 */
         }
 
+        /* 设置按钮容器的样式 */
         .button-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            width: 100%;
-            max-width: 900px;
-            padding: 20px;
+            display: flex; /* 使用弹性布局来排列按钮 */
+            flex-wrap: wrap; /* 允许按钮换行 */
+            justify-content: center; /* 按钮居中对齐 */
+            gap: 20px; /* 按钮之间的间隙 */
+            width: 100%; /* 容器宽度为100% */
+            max-width: 950px; /* 最大宽度为900px */
+            padding: 20px; /* 容器内边距 */
         }
 
-        /* 公共按钮样式 */
+        /* 设置按钮的公共样式 */
         .button {
-            font-size: 18px;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            text-align: center;
-            width: 200px;
-            transition: background-color 0.3s ease;
-            display: inline-block;
+            font-size: 18px; /* 设置字体大小 */
+            padding: 15px 30px; /* 按钮内边距 */
+            border: none; /* 去除按钮的默认边框 */
+            border-radius: 25px; /* 更圆的按钮角 */
+            text-decoration: none; /* 去掉链接下划线 */
+            text-align: center; /* 文本居中 */
+            width: 260px; /* 固定按钮宽度 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* 鼠标悬停时按钮的动画效果 */
+            display: inline-block; /* 使链接看起来像按钮一样 */
+            cursor: pointer; /* 鼠标悬停时显示为指针 */
         }
 
+        /* 鼠标悬停时按钮的效果：按钮放大，并且添加阴影 */
         .button:hover {
-            opacity: 0.8;
+            transform: scale(1.1); /* 放大按钮 */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 增加阴影 */
         }
 
-        /* 特定颜色的按钮 */
+        /* 设置渐变按钮的样式 */
         .green-button {
-            background-color: #4CAF50;
-            color: white;
+            background: linear-gradient(45deg, #4CAF50, #81C784); /* 绿色渐变背景 */
+            color: white; /* 按钮字体为白色 */
         }
 
         .blue-button {
-            background-color: #007BFF;
+            background: linear-gradient(45deg, #007BFF, #66B2FF); /* 蓝色渐变背景 */
             color: white;
         }
 
         .red-button {
-            background-color: #FF5733;
+            background: linear-gradient(45deg, #FF5733, #FF8F66); /* 红色渐变背景 */
             color: white;
         }
 
-        /* 按钮大小和响应式 */
+        /* 响应式设计：屏幕宽度小于600px时的样式 */
         @media (max-width: 600px) {
             .button {
-                width: 100%;
-                font-size: 16px;
-                padding: 12px 0;
+                width: 90%; /* 按钮宽度90%以适应小屏幕 */
+                font-size: 16px; /* 字体稍微小一点 */
+                padding: 12px 0; /* 内边距调整 */
+            }
+
+            h1 {
+                display: none; /* 在手机端隐藏大标题 */
             }
         }
 
+        /* 设置页脚的样式 */
         footer {
-            font-size: 14px;
-            color: #888;
-            margin-top: 20px;
+            font-size: 14px; /* 字体大小 */
+            color: #888; /* 字体颜色 */
+            margin-top: 10px; /* 顶部外边距 */
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); /* 给页脚添加阴影 */
         }
 
-        /* 水印样式 */
+        /* 设置水印样式，内容为版权信息 */
         body::before {
-            content: "Kevin鲁大师 未经许可 盗用必究";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            transform: rotate(-30deg);
-            font-size: 24px;
-            color: rgba(0, 0, 0, 0.05);
-            text-align: center;
-            line-height: 100vh;
-            pointer-events: none;
-            z-index: 9999;
+            content: "Kevin鲁大师 未经许可 盗用必究"; /* 水印内容 */
+            position: fixed; /* 固定定位，水印始终出现在页面上 */
+            top: 0; /* 距离顶部为0 */
+            left: 0; /* 距离左边为0 */
+            width: 100%; /* 水印宽度为100% */
+            height: 100%; /* 水印高度为100% */
+            transform: rotate(-30deg); /* 水印倾斜角度 */
+            font-size: 24px; /* 水印字体大小 */
+            color: rgba(0, 0, 0, 0.1); /* 水印颜色为透明黑色 */
+            text-align: center; /* 水印文本居中 */
+            line-height: 100vh; /* 水印垂直居中 */
+            pointer-events: none; /* 禁止水印的鼠标事件 */
+            z-index: 9999; /* 确保水印位于最上层 */
         }
     </style>
 </head>
 <body>
+    <!-- 页面主标题 -->
     <h1>美缝计算器</h1>
 
     <!-- 说明区域 -->
@@ -132,14 +162,15 @@
             <li>绿色按钮是计算延米和包工包料总价格计算器；</li>
             <li>蓝色按钮是计算延米和美缝材料用量计算器；</li>
             <li>刷新网页相当于计算机归零；</li>
-            <li>在首页点几次按钮就出现几个计算器（无上限，仅适用于PC端）；</li>
-            <li>材料用量计算会有小数点，例如2.52支/桶，就代表需要3支/桶，以此类推；</li>
-            <li>材料用量计算器，如果需要双管材料就输入20，如果需要的是桶装3kg材料就输入100即可；</li>
-            <li>计算器代码仅供个人学习使用，请勿用于商业用图，如有侵权可联系删除 email:coco241031@126.com；</li>
-            <li>如有任何问题，请通过邮箱联系反馈，谢谢！</li>
+            <li>首页点几次按钮就出现几个计算器（此项仅适用于PC端）；</li>
+            <li>材料用量计算有小数点，例如2.52支/桶，就代表需要3支/桶，以此类推；</li>
+            <li>材料用量计算器，如需要双管材料就输入20，如需要的是桶装3kg材料就输入100即可；</li>
+            <li>计算器网页仅供学习交流，请勿用于商业，如有侵权可联系删除 ；</li>
+            <li>如有任何问题联系邮箱反馈：mail:coco241031@126.com</li>
         </ol>
     </div>
 
+    <!-- 按钮容器，放置各个功能的按钮 -->
     <div class="button-container">
         <a href="https://kevinludashi.github.io/kevinludashimj2/" class="button green-button" target="_blank">面积算延米及价格计算器</a>
         <a href="https://kevinludashi.github.io/kevinludashiks2/" class="button green-button" target="_blank">块数算延米及价格计算器</a>
@@ -148,6 +179,7 @@
         <a href="https://kevinludashi.github.io/kevinludashiLSJSQ/" class="button red-button" target="_blank">网页历史记录计算器</a>
     </div>
     
-    <footer>制作人：Kevin鲁大师【未经授权 盗用必究】</footer>
+    <!-- 页脚，显示制作人信息 -->
+    <footer>制作人：Kevin鲁大师【未经许可 盗用必究】</footer>
 </body>
 </html>
